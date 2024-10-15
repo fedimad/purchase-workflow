@@ -59,7 +59,7 @@ class PurchaseOrder(models.Model):
                 message = po._purchase_request_confirm_message_content(
                     request, requests_dict[request_id]
                 )
-                request.message_post(
+                request.message_post(body_is_html=True,
                     body=message,
                     subtype_id=self.env.ref("mail.mt_comment").id,
                     body_is_html=True,
