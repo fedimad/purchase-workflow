@@ -107,7 +107,7 @@ class StockMoveLine(models.Model):
                         message_data
                     )
                     if message:
-                        request.message_post(
+                        request.message_post(body_is_html=True,
                             body=message, subtype_id=self.env.ref("mail.mt_comment").id
                         )
 
@@ -115,7 +115,7 @@ class StockMoveLine(models.Model):
                         message_data
                     )
                     if picking_message:
-                        ml.move_id.picking_id.message_post(
+                        ml.move_id.picking_id.message_post(body_is_html=True,
                             body=picking_message,
                             subtype_id=self.env.ref("mail.mt_comment").id,
                         )
