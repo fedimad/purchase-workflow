@@ -59,7 +59,7 @@ class PurchaseOrder(models.Model):
                 message = po._purchase_request_confirm_message_content(
                     request, requests_dict[request_id]
                 )
-                request.message_post(
+                request.message_post(body_is_html=True,
                     body=message, subtype_id=self.env.ref("mail.mt_comment").id
                 )
         return True
@@ -180,7 +180,7 @@ class PurchaseOrderLine(models.Model):
                     message_data
                 )
                 if message:
-                    alloc.purchase_request_line_id.request_id.message_post(
+                    alloc.purchase_request_line_id.request_id.message_post(body_is_html=True,
                         body=message, subtype_id=self.env.ref("mail.mt_comment").id
                     )
 
